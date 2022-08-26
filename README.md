@@ -1,0 +1,11 @@
+# TOP] Rock Paper Scissors  
+  
+## Description 
+
+The main goal of [this assignment](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors) is to create a simple 'rock, paper, scissors' game working with console.log messages. However in this project i'll go beyond the given task and will include DOM manipulations (which is also [another assignment](https://www.theodinproject.com/lessons/foundations-revisiting-rock-paper-scissors).  
+  
+## Summary
+
+- Rock paper scissors game for 1 player
+- Computer chooses one of the options randomly
+- DOM manipulation
