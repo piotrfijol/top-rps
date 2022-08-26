@@ -81,3 +81,25 @@ body {
     box-sizing: border-box;
 }
 
+/* Terminal cursor */
+.command::after {
+    content: '';
+    display: inline-block;
+    width: .5em;
+    height: 1em;
+    margin-left: -.3em;
+    margin-top: .3em;
+    background-color: var(--terminal-font-color);
+    animation-name: blink;
+    animation-duration: 1.3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes blink {
+    0% {visibility: hidden}
+    35% {visibility: hidden;}
+    36% {visibility: visible;}
+    90% {visibility: visible;}
+    91% {visibility: hidden;}
+}
