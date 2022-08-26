@@ -8,6 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(15, 15, 15);
 }
 
 .terminal {
@@ -49,6 +50,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(220deg, #222229 40%, #1C1C22 50%, #1c1c20);   
 }
 
 .front .frame {
@@ -61,7 +63,11 @@ body {
 .screen {
     width: 70%;
     height: 80%;
-    background-color: #101011;
+    background: radial-gradient(ellipse, rgb(16, 16, 17) 10%, #141416 90%);
     position: absolute;
-    border-radius: 8px;
+    border-radius: 50px / 10px;
+    border-top-left-radius: 5% 15%;
+    border-bottom-left-radius: 5% 20%;
+    border-top-right-radius: 5% 15%;
+    border-bottom-right-radius: 5% 20%;
 }
