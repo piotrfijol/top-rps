@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+:root {
+    --terminal-font-color: rgb(10, 100, 10);
+}
+
 body {
     height: 100vh;
     display: flex;
@@ -43,7 +47,6 @@ body {
     bottom: 100%;
     transform: rotateX(90deg);
     transform-origin: bottom center;
-    border-bottom: 10px solid orange;
 }
 
 .front {
@@ -63,11 +66,18 @@ body {
 .screen {
     width: 70%;
     height: 80%;
-    background: radial-gradient(ellipse, rgb(16, 16, 17) 10%, #141416 90%);
+    background: radial-gradient(ellipse, rgb(15, 15, 15) 30%, #0e0d0d 80%, #070707);
     position: absolute;
     border-radius: 50px / 10px;
     border-top-left-radius: 5% 15%;
     border-bottom-left-radius: 5% 20%;
     border-top-right-radius: 5% 15%;
     border-bottom-right-radius: 5% 20%;
+    overflow: hidden;
+    padding: 1.5em;
+    font-family: 'VT323', monospace;
+    color: var(--terminal-font-color);
+    font-size: 24px;
+    box-sizing: border-box;
 }
+
