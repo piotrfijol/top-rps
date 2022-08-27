@@ -11,7 +11,7 @@ function rotateTerminal(ev) {
     distance.x = clamp(distance.x, -CLAMP, CLAMP);
     distance.y = clamp(distance.y, -CLAMP, CLAMP);
     
-    document.querySelector('.terminal').style.transform = `rotateX(${distance.y * 0.002}deg) rotateY(${distance.x * 0.001}deg) rotateZ(${distance.y * 0.0002}deg)`;
+    document.querySelector('.terminal').style.transform = `rotateX(${-distance.y * 0.004}deg) rotateY(${distance.x * 0.002}deg) rotateZ(${distance.y *distance.x * 0.000001}deg)`;
 }   
 
 function clamp(n, a = 0, b = 1) {
