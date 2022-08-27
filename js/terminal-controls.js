@@ -1,5 +1,9 @@
 document.addEventListener('mousemove', rotateTerminal);
 
+const terminal = {
+    isPrinting: false
+}
+
 function rotateTerminal(ev) {
     let mouse = {x: ev.clientX, y: ev.clientY};
     let distance = {
@@ -19,12 +23,16 @@ function clamp(n, a = 0, b = 1) {
 }
 
 function readInput(ev) {
+
+    if(terminal.isPrinting) {
+        return;
+    }
+
     let commandLine = document.querySelector('.terminal .screen .command');
     let char = ev.key;
     let command = commandLine.textContent;
     if(char === 'Enter') {
-        readCommand(command);
-        
+
         let textNode = document.createTextNode('> ' + command);
 
         commandLine.textContent = '';
@@ -32,6 +40,9 @@ function readInput(ev) {
         document.querySelector('.instructions').appendChild(document.createElement('br'));
         document.querySelector('.instructions').appendChild(textNode);
 
+        readCommand(command);
+
+        
     } else if(char === 'Backspace') {
         commandLine.textContent = command.slice(0, command.length-1);
         return;
@@ -50,7 +61,36 @@ document.addEventListener('keydown', readInput);
 
 function readCommand(command) {
     if(command === 'rps') {
-        document.querySelector('.instructions').innerHTML += splashScreen.replace(/\\/g, '\\').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>').replace(/[ ]/g, '&nbsp;');
+        printText(splashScreen);
     }
     
+}
+
+function htmlEncode(text) {
+    return text
+        .replace(/\'/g, '&#39;')
+        .replace(/\"/g, '&quot;')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\n/g, '<br>')
+        .replace(/[ ]/g, '&nbsp;');
+}
+
+function printText(text) {
+
+    let textArr = text.split("\n")
+    
+    terminal.isPrinting = true;
+    printLine(textArr.shift());
+
+    function printLine(line) {
+        let textOutput = document.querySelector('.terminal .instructions');
+        textOutput.innerHTML += htmlEncode(line)+'<br>';
+
+        if(textArr.length !== 0)
+            setTimeout(printLine,  Math.floor(Math.random() * 200), textArr.shift());
+        else
+            terminal.isPrinting = false;
+    }
 }
