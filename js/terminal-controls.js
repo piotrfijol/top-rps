@@ -28,12 +28,12 @@ function readInput(ev) {
         return;
     } else if(char === 'Space') {
         char = ' ';
-    } else if(char.charCodeAt(0) < 97 || char.charCodeAt(0) > 122) {
-        char = '';
-        console.log("HM")
+        commandLine.textContent += char;
+    } else if(char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122
+    || char.charCodeAt(0) >= 48 && char.charCodeAt(0) < 58) {
+        commandLine.textContent += char;
     }
 
-    commandLine.textContent += char;
 }
 
 document.addEventListener('keydown', readInput);
