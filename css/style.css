@@ -99,7 +99,7 @@ body {
 
 .screen .command, .screen .instructions {
     word-break: break-all;
-    line-height: 1.2em;
+    line-height: 1em;
 }
 
 /* Terminal cursor */
