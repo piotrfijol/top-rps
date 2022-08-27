@@ -4,7 +4,8 @@
 }
 
 :root {
-    --terminal-font-color: rgb(10, 100, 10);
+    --terminal-font-color: rgb(23, 107, 23);
+    --terminal-shadow-color: rgb(19, 59, 19);
 }
 
 body {
@@ -90,6 +91,13 @@ body {
     color: var(--terminal-font-color);
     font-size: 24px;
     box-sizing: border-box;
+    box-shadow: inset 0 0 15px 15px rgb(10, 10, 10),
+                inset 0 0 5px 7px #000;
+
+    text-shadow: 0 5px 10px var(--terminal-shadow-color),
+                 5px 0 10px var(--terminal-shadow-color),
+                 -5px 0 10px var(--terminal-shadow-color),
+                 0 -5px 10px var(--terminal-shadow-color);
 }
 
 /* Terminal cursor */
@@ -105,6 +113,11 @@ body {
     animation-duration: 1.3s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+
+    box-shadow: 0 5px 10px 1px var(--terminal-shadow-color),
+                 5px 0 10px 1px var(--terminal-shadow-color),
+                 -5px 0 10px 1px var(--terminal-shadow-color),
+                 0 -5px 10px 1px var(--terminal-shadow-color);
 }
 
 @keyframes blink {
