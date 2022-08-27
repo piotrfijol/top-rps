@@ -22,7 +22,18 @@ function readInput(ev) {
     let commandLine = document.querySelector('.terminal .screen .command');
     let char = ev.key;
     if(char === 'Enter') {
-        char = '';
+        
+        let textNode = document.createTextNode(commandLine.textContent);
+        commandLine.textContent = '';
+
+        document.querySelector('.instructions').appendChild(document.createElement('br'));
+        document.querySelector('.instructions').appendChild(textNode);
+
+        let prompt = document.createElement('span');
+        prompt.classList = 'prompt';
+        prompt.textContent = '> '; 
+        commandLine.appendChild(prompt);
+
     } else if(char === 'Backspace') {
         commandLine.textContent = commandLine.textContent.slice(0, commandLine.textContent.length-1);
         return;
