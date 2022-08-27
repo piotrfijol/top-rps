@@ -21,16 +21,19 @@ function clamp(n, a = 0, b = 1) {
 function readInput(ev) {
     let commandLine = document.querySelector('.terminal .screen .command');
     let char = ev.key;
+    let command = commandLine.textContent;
     if(char === 'Enter') {
+        readCommand(command);
         
-        let textNode = document.createTextNode('> ' + commandLine.textContent);
+        let textNode = document.createTextNode('> ' + command);
+
         commandLine.textContent = '';
 
         document.querySelector('.instructions').appendChild(document.createElement('br'));
         document.querySelector('.instructions').appendChild(textNode);
 
     } else if(char === 'Backspace') {
-        commandLine.textContent = commandLine.textContent.slice(0, commandLine.textContent.length-1);
+        commandLine.textContent = command.slice(0, command.length-1);
         return;
     } else if(char === 'Space') {
         char = ' ';
@@ -43,3 +46,11 @@ function readInput(ev) {
 }
 
 document.addEventListener('keydown', readInput);
+
+
+function readCommand(command) {
+    if(command === 'rps') {
+        document.querySelector('.instructions').innerHTML += splashScreen.replace(/\\/g, '\\').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>').replace(/[ ]/g, '&nbsp;');
+    }
+    
+}
