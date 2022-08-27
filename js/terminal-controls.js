@@ -17,3 +17,23 @@ function rotateTerminal(ev) {
 function clamp(n, a = 0, b = 1) {
     return Math.min(b, Math.max(n, a));
 }
+
+function readInput(ev) {
+    let commandLine = document.querySelector('.terminal .screen .command');
+    let char = ev.key;
+    if(char === 'Enter') {
+        char = '';
+    } else if(char === 'Backspace') {
+        commandLine.textContent = commandLine.textContent.slice(0, commandLine.textContent.length-1);
+        return;
+    } else if(char === 'Space') {
+        char = ' ';
+    } else if(char.charCodeAt(0) < 97 || char.charCodeAt(0) > 122) {
+        char = '';
+        console.log("HM")
+    }
+
+    commandLine.textContent += char;
+}
+
+document.addEventListener('keydown', readInput);
