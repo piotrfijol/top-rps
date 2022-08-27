@@ -48,7 +48,8 @@ function readInput(ev) {
         key = ' ';
         commandLine.textContent += key;
     } else if(key.charCodeAt(0) >= 97 && key.charCodeAt(0) <= 122
-    || key.charCodeAt(0) >= 48 && key.charCodeAt(0) < 58) {
+    || key.charCodeAt(0) >= 48 && key.charCodeAt(0) < 58
+    || key === '/') {
         commandLine.textContent += key;
         terminal.input += key;
     }
