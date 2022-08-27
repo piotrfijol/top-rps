@@ -48,8 +48,7 @@ function readInput(ev) {
         key = ' ';
         commandLine.textContent += key;
     } else if(key.charCodeAt(0) >= 97 && key.charCodeAt(0) <= 122
-    || key.charCodeAt(0) >= 48 && key.charCodeAt(0) < 58
-    || key === '/') {
+    || key.charCodeAt(0) >= 48 && key.charCodeAt(0) < 58) {
         commandLine.textContent += key;
         terminal.input += key;
     }
@@ -64,10 +63,9 @@ function readCommand(command) {
     if(command === 'rps') {
         terminal.status = PROGRAM;
         printText(splashScreen, playGame);
-    } else if(command === '/help') {
+    } else if(command === 'help') {
         printText(manual);
     }
-    
 }
 
 function htmlEncode(text) {
