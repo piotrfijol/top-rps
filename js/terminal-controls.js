@@ -25,54 +25,60 @@ function readInput(ev) {
     }
 
     let commandLine = document.querySelector('.terminal .screen .command');
-    let char = ev.key;
+    let key = ev.key;
     let command = commandLine.textContent;
-    if(char === 'Enter') {
-
-        let textNode = document.createTextNode('> ' + command);
-
+    if(key === 'Enter') {
         commandLine.textContent = '';
 
         printText('> ' + command);
+        if(terminal.eventAwait) {
+            terminal.eventAwait.next();
+        }
 
-        readCommand(command);
+        if(terminal.status === FREE)
+            readCommand(command);
 
+        terminal.input = '';
         
-    } else if(char === 'Backspace') {
+    } else if(key === 'Backspace') {
         commandLine.textContent = command.slice(0, command.length-1);
+        terminal.input = terminal.input.slice(0, terminal.input.length-1);
         return;
-    } else if(char === 'Space') {
-        char = ' ';
-        commandLine.textContent += char;
-    } else if(char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122
-    || char.charCodeAt(0) >= 48 && char.charCodeAt(0) < 58) {
-        commandLine.textContent += char;
+    } else if(key === 'Space') {
+        key = ' ';
+        commandLine.textContent += key;
+    } else if(key.charCodeAt(0) >= 97 && key.charCodeAt(0) <= 122
+    || key.charCodeAt(0) >= 48 && key.charCodeAt(0) < 58) {
+        commandLine.textContent += key;
+        terminal.input += key;
     }
 
 }
 
 document.addEventListener('keydown', readInput);
 
+function readLine() {}
 
 function readCommand(command) {
     if(command === 'rps') {
-        printText(splashScreen);
+        terminal.status = PROGRAM;
+        printText(splashScreen, playGame);
     }
     
 }
 
 function htmlEncode(text) {
     return text
+        .replace(/&/g, '&amp;')
         .replace(/\'/g, '&#39;')
         .replace(/\"/g, '&quot;')
-        .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/\n/g, '<br>')
         .replace(/[ ]/g, '&nbsp;');
 }
 
-function printText(text) {
+function printText(text, callback) {
 
     let textArr = text.split("\n")
     
@@ -91,7 +97,11 @@ function printText(text) {
 
         if(textArr.length !== 0)
             setTimeout(printLine,  Math.floor(Math.random() * 200), textArr.shift());
-        else
+        else {
             terminal.isPrinting = false;
+
+            if(callback !== undefined)
+                callback();
+        }
     }
 }
