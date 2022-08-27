@@ -92,14 +92,20 @@ body {
     box-sizing: border-box;
 }
 
+
+.screen .command, .screen .instructions {
+    word-break: break-all;
+    line-height: 1.2em;
+}
+
 /* Terminal cursor */
 .command::after {
     content: '';
     display: inline-block;
-    width: .5em;
-    height: 1em;
+    width: .4em;
+    height: .8em;
+    transform: translateX(.37em) translateY(.1em);
     margin-left: -.3em;
-    margin-top: .3em;
     background-color: var(--terminal-font-color);
     animation-name: blink;
     animation-duration: 1.3s;
