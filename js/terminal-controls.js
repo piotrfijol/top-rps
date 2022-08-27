@@ -1,9 +1,5 @@
 document.addEventListener('mousemove', rotateTerminal);
 
-const terminal = {
-    isPrinting: false
-}
-
 function rotateTerminal(ev) {
     let mouse = {x: ev.clientX, y: ev.clientY};
     let distance = {
