@@ -37,8 +37,7 @@ function readInput(ev) {
 
         commandLine.textContent = '';
 
-        document.querySelector('.instructions').appendChild(document.createElement('br'));
-        document.querySelector('.instructions').appendChild(textNode);
+        printText('> ' + command);
 
         readCommand(command);
 
@@ -84,8 +83,14 @@ function printText(text) {
     terminal.isPrinting = true;
     printLine(textArr.shift());
 
+
     function printLine(line) {
         let textOutput = document.querySelector('.terminal .instructions');
+        let textOutputStyles = getComputedStyle(textOutput);
+        
+        if(parseInt(textOutputStyles.marginTop) + parseInt(textOutputStyles.height) + parseInt(textOutputStyles.lineHeight) > 450) {
+            textOutput.style.marginTop = (parseInt(textOutputStyles.marginTop)-parseInt(textOutputStyles.lineHeight))+'px';
+        }
         textOutput.innerHTML += htmlEncode(line)+'<br>';
 
         if(textArr.length !== 0)
