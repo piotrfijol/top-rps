@@ -73,6 +73,10 @@ body {
     clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
     background: linear-gradient(#121214 5%, #121214 8%, #17171a 15%,  #202027)
 }
+/* Command prompt */
+.screen .command::before {
+    content: '> ';
+}
 
 .screen {
     width: 70%;
