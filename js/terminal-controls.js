@@ -64,6 +64,8 @@ function readCommand(command) {
     if(command === 'rps') {
         terminal.status = PROGRAM;
         printText(splashScreen, playGame);
+    } else if(command === '/help') {
+        printText(manual);
     }
     
 }
