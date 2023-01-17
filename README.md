@@ -8,7 +8,7 @@ The main goal of [this assignment](https://www.theodinproject.com/lessons/founda
 
 - Rock paper scissors game for 1 player
 - Computer chooses one of the options randomly
-- DOM manipulation
+- DOM manipulations
 
 ## Result
 
